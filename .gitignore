@@ -1,0 +1,4 @@
+__pycache__/
+*~
+*.txt
+!install_list.txt
