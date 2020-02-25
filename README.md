@@ -6,15 +6,15 @@ Dark Organizer is an organizer application that made by pygame.
 
 There is a install list txt file. Even though the only library is pygame
 
-'''bash
+```bash
 pip install -r install_list.txt
-'''
+```
 
 or
 
-'''bash
+```bash
 pip3 install -r install_list.txt
-'''
+```
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
