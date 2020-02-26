@@ -75,7 +75,7 @@ LB = buttom(pygame.Rect([600, 480, 80, 40]), white, (170, 100, 230))
 
 
 
-log_in = False
+#log_in = False
 
 while log_in:
 
@@ -191,7 +191,7 @@ while main_in:
         main_in = False
     list_buttom.text_in_buttom(window, myfont, "Exit")
     if(create_item_buttom.buttom_is_press(window, mouse)):
-        add_item_window(things, list_box)
+        add_item_window(size, things, list_box)
     create_item_buttom.text_in_buttom(window, myfont, "Add")
 
 

@@ -2,8 +2,20 @@ import pygame
 from text_box import text_box
 from item import item
 from buttom import buttom
-def add_item_window(things, list_box):
-    size = (1280, 720)
+
+
+def add_item(text_input_boxes):
+    new_thing = []
+    for i in text_input_boxes:
+        new_thing.append(i.return_text())
+        
+    context, level, state, color, date = new_thing
+    new_thing = item(context, level, state, color, date)
+    new_thing.write_file("list.txt")
+    return new_thing
+
+
+def add_item_window(size, things, list_box):
     create_window_size = (500, 600)
     create_window = pygame.display.set_mode(create_window_size)
     pygame.display.set_caption("Add item")
@@ -65,16 +77,11 @@ def add_item_window(things, list_box):
 
         
         if(Ok_buttom.buttom_is_press(create_window, mouse)):
-            new_thing = []
-            for i in text_input_boxes:
-                new_thing.append(i.return_text())
-
-            context, level, state, color, date = new_thing
-            new_thing = item(context, level, state, color, date)
-            new_thing.write_file("list.txt")
+            thing_item= add_item(text_input_boxes)
             temp_box = text_box(pygame.Rect([20, 20 + 100*len(things), 510, 80]), white, textbox_active_color)
-            temp_box.change_text(new_thing.string_form())
-            things.append(new_thing)
+            temp_box.change_text(thing_item.string_form())
+            things.append(thing_item)
+            list_box.append(temp_box)
             is_create = False
             print("Done")
         if(Cancel_buttom.buttom_is_press(create_window, mouse)):
@@ -85,9 +92,7 @@ def add_item_window(things, list_box):
         
         
         pygame.display.flip()
-
-    if not is_cancel:
-        list_box.append(temp_box)
+        
     window = pygame.display.set_mode(size)
     pygame.display.set_caption("Listing System")
 
