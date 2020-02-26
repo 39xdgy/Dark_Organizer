@@ -78,7 +78,11 @@ def add_item_window(size, things, list_box):
         
         if(Ok_buttom.buttom_is_press(create_window, mouse)):
             thing_item= add_item(text_input_boxes)
-            temp_box = text_box(pygame.Rect([20, 20 + 100*len(things), 510, 80]), white, textbox_active_color)
+            str_color = thing_item.return_color()[1:-1]
+            RGB_list = str_color.split(', ')
+            for j in range(0, len(RGB_list)):
+                RGB_list[j] = int(RGB_list[j])
+            temp_box = text_box(pygame.Rect([20, 20 + 100*len(things), 510, 80]), tuple(RGB_list), textbox_active_color)
             temp_box.change_text(thing_item.string_form())
             things.append(thing_item)
             list_box.append(temp_box)

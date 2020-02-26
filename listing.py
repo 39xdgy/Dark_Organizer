@@ -75,7 +75,7 @@ LB = buttom(pygame.Rect([600, 480, 80, 40]), white, (170, 100, 230))
 
 
 
-#log_in = False
+log_in = False
 
 while log_in:
 
@@ -154,7 +154,11 @@ for line in txt_file:
 
 num_of_item = 0
 for i in things:
-    temp_box = text_box(pygame.Rect([20, 20+100*num_of_item, 510, 80]), white, textbox_active_color)
+    str_color = i.return_color()[1:-1]
+    RGB_list = str_color.split(', ')
+    for j in range(0, len(RGB_list)):
+        RGB_list[j] = int(RGB_list[j])
+    temp_box = text_box(pygame.Rect([20, 20+100*num_of_item, 510, 80]), tuple(RGB_list), textbox_active_color)
     temp_box.change_text(i.string_form())
     list_box.append(temp_box)
     num_of_item += 1
